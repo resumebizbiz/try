@@ -1,1097 +1,206 @@
-/* ================================================
-   RM35 ADVANCED PORTFOLIO TEMPLATE
-   Layout: Sidebar nav, scroll-reveal, hover interactions
-   Palette: Navy / Vivid Blue / Gold
-   ================================================ */
-
-:root {
-  --bg-page:        #F7F9FC;
-  --bg-card:        #FFFFFF;
-  --bg-sidebar:     #0B1F3D;
-  --bg-placeholder: #E7ECF6;
-  --text-primary:   #0B1F33;
-  --text-secondary: #4A5A72;
-  --text-muted:     #8595AC;
-  --text-on-dark:   #F7F9FC;
-  --text-on-dark-muted: #94A3C2;
-  --accent:         #1E4FD6;
-  --accent-light:   #5C81E8;
-  --gold:           #F4B740;
-  --gold-deep:      #C98F1E;
-  --border:         #E1E6F0;
-  --shadow:         0 4px 24px rgba(11,31,61,0.07);
-  --shadow-lift:    0 14px 32px rgba(11,31,61,0.14);
-  --placeholder-icon: #9FB0CC;
-}
-
-[data-theme="dark"] {
-  --bg-page:        #060B14;
-  --bg-card:        #0E1828;
-  --bg-sidebar:     #050A12;
-  --bg-placeholder: #16223A;
-  --text-primary:   #E8EDF7;
-  --text-secondary: #A4B2CB;
-  --text-muted:     #69789A;
-  --text-on-dark:   #E8EDF7;
-  --text-on-dark-muted: #6E80A6;
-  --accent:         #5C81E8;
-  --accent-light:   #8AA6F2;
-  --gold:           #F4B740;
-  --gold-deep:      #D9A23A;
-  --border:         #1C2A45;
-  --shadow:         0 4px 24px rgba(0,0,0,0.35);
-  --shadow-lift:    0 14px 36px rgba(0,0,0,0.5);
-  --placeholder-icon: #4D6090;
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; height: 100%; }
-
-body {
-  font-family: 'Inter', 'Segoe UI', sans-serif;
-  font-size: 15.5px;
-  line-height: 1.7;
-  color: var(--text-primary);
-  background: var(--bg-page);
-  min-height: 100%;
-  transition: background 0.3s, color 0.3s;
-}
-
-h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; }
-
-/* ================================================
-   SCROLL PROGRESS RAIL
-   ================================================ */
-.progress-rail {
-  position: fixed;
-  top: 0; left: 0;
-  width: 4px;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  z-index: 998;
-}
-
-.rail-segment {
-  flex: 1;
-  background: rgba(255,255,255,0.08);
-  transition: background 0.3s ease;
-}
-[data-theme="light"] .rail-segment { background: rgba(11,31,61,0.07); }
-
-.rail-segment.is-current,
-.rail-segment.is-passed {
-  background: var(--gold);
-}
-
-/* ================================================
-   THEME TOGGLE
-   ================================================ */
-.theme-toggle {
-  position: fixed;
-  top: 1.4rem;
-  right: 1.4rem;
-  z-index: 999;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 2px solid var(--gold);
-  background: var(--bg-card);
-  color: var(--text-primary);
-  cursor: pointer;
-  font-size: 1.15rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow);
-}
-
-[data-theme="light"] .icon-moon { display: block; }
-[data-theme="light"] .icon-sun  { display: none; }
-[data-theme="dark"]  .icon-sun  { display: block; }
-[data-theme="dark"]  .icon-moon { display: none; }
-
-/* ================================================
-   SIDEBAR
-   ================================================ */
-.sidebar {
-  position: fixed;
-  top: 0; left: 4px;
-  width: 260px;
-  height: 100vh;
-  background: var(--bg-sidebar);
-  color: var(--text-on-dark);
-  display: flex;
-  flex-direction: column;
-  padding: 2.4rem 1.6rem;
-  z-index: 100;
-  transition: transform 0.3s ease;
-}
-
-.sidebar-top {
-  text-align: center;
-  margin-bottom: 2.4rem;
-}
-
-.profile-ring-small {
-  width: 92px;
-  height: 92px;
-  border-radius: 50%;
-  padding: 3px;
-  background: linear-gradient(135deg, var(--gold), var(--accent-light));
-  margin: 0 auto 1rem;
-}
-
-.profile-pic-small {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--bg-sidebar);
-  display: block;
-}
-
-.sidebar-name {
-  font-family: 'Fraunces', serif;
-  font-size: 1.05rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  margin-bottom: 0.2rem;
-}
-
-.sidebar-role {
-  font-size: 0.8rem;
-  color: var(--text-on-dark-muted);
-}
-
-.sidebar-nav {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.nav-link {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  padding: 0.6rem 0.7rem;
-  border-radius: 8px;
-  text-decoration: none;
-  color: var(--text-on-dark-muted);
-  font-size: 0.85rem;
-  font-weight: 500;
-  transition: background 0.2s, color 0.2s;
-}
-
-.nav-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--text-on-dark-muted);
-  flex-shrink: 0;
-  transition: background 0.2s, transform 0.2s;
-}
-
-.nav-link:hover {
-  color: var(--text-on-dark);
-  background: rgba(255,255,255,0.05);
-}
-
-.nav-link.active {
-  color: var(--text-on-dark);
-  background: rgba(244,183,64,0.12);
-}
-
-.nav-link.active .nav-dot {
-  background: var(--gold);
-  transform: scale(1.3);
-}
-
-.sidebar-bottom { margin-top: 1.2rem; }
-
-.sidebar-cta {
-  display: block;
-  text-align: center;
-  background: var(--gold);
-  color: #1A1206;
-  font-weight: 700;
-  font-size: 0.88rem;
-  padding: 0.7rem;
-  border-radius: 10px;
-  text-decoration: none;
-  transition: background 0.2s, transform 0.2s;
-}
-
-.sidebar-cta:hover {
-  background: var(--gold-deep);
-  transform: translateY(-2px);
-}
-
-.mobile-nav-toggle {
-  display: none;
-  position: fixed;
-  top: 1.4rem;
-  left: 1.4rem;
-  z-index: 999;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 2px solid var(--gold);
-  background: var(--bg-card);
-  color: var(--text-primary);
-  font-size: 1.2rem;
-  cursor: pointer;
-  box-shadow: var(--shadow);
-}
-
-.sidebar-backdrop {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100vh;
-  background: rgba(0,0,0,0.45);
-  z-index: 99;
-  opacity: 0;
-  transition: opacity 0.25s ease;
-}
-
-.sidebar-backdrop.is-visible {
-  display: block;
-  opacity: 1;
-}
-
-/* ================================================
-   MAIN CONTENT
-   ================================================ */
-.main-content {
-  margin-left: 264px;
-  display: flex;
-  justify-content: center;
-  padding: 0 3rem 5rem;
-}
-
-.main-content > .panel {
-  width: 100%;
-  max-width: 920px;
-}
-
-/* ================================================
-   TAB PANELS
-   Only the .is-active panel is shown; switching tabs
-   swaps which panel has this class via JS.
-   ================================================ */
-.panel {
-  display: none;
-}
-
-.panel.is-active {
-  display: block;
-}
-
-.hero.panel.is-active {
-  display: flex;
-}
-
-/* ================================================
-   HERO
-   ================================================ */
-.hero {
-  position: relative;
-  min-height: 70vh;
-  display: flex;
-  align-items: center;
-  padding-top: 4rem;
-  overflow: hidden;
-}
-
-.hero-bg-photo {
-  position: absolute;
-  top: 0;
-  right: -5%;
-  width: 60%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.5) 35%, black 60%);
-  mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.5) 35%, black 60%);
-}
-
-.hero-bg-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
-  filter: grayscale(1);
-  opacity: 0.08;
-}
-
-[data-theme="dark"] .hero-bg-photo img {
-  opacity: 0.12;
-}
-
-.hero-inner {
-  position: relative;
-  z-index: 1;
-}
-
-.hero-eyebrow {
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1rem;
-}
-
-.hero-title {
-  font-size: 3.4rem;
-  font-weight: 600;
-  line-height: 1.15;
-  margin-bottom: 1.2rem;
-  color: var(--text-primary);
-}
-
-.hero-title .accent {
-  color: var(--accent);
-  font-style: italic;
-}
-
-.hero-sub {
-  font-size: 1.15rem;
-  color: var(--text-secondary);
-  max-width: 560px;
-  margin-bottom: 1.6rem;
-}
-
-.hero-contact {
-  font-size: 0.92rem;
-  color: var(--text-secondary);
-}
-
-.hero-contact a {
-  color: var(--text-primary);
-  font-weight: 600;
-  text-decoration: none;
-  border-bottom: 1.5px solid var(--gold);
-}
-
-.dot-sep {
-  margin: 0 0.6rem;
-  color: var(--text-muted);
-}
-
-/* ================================================
-   BLOCK SECTIONS
-   ================================================ */
-.block {
-  padding: 5rem 0;
-  border-top: 1px solid var(--border);
-}
-
-.block-eyebrow {
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--gold-deep);
-  margin-bottom: 0.6rem;
-}
-
-.block-title {
-  font-size: 2rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 1.6rem;
-}
-
-.block-intro {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  margin-bottom: 1.8rem;
-  max-width: 640px;
-}
-
-.objective-text {
-  font-size: 1.08rem;
-  color: var(--text-secondary);
-  line-height: 1.8;
-  max-width: 680px;
-  border-left: 3px solid var(--gold);
-  padding-left: 1.2rem;
-}
-
-/* ================================================
-   RESUME VIEW
-   ================================================ */
-.resume-frame-wrap {
-  margin-bottom: 1.2rem;
-}
-
-.resume-frame {
-  width: 100%;
-  height: 70vh;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  box-shadow: var(--shadow);
-}
-
-/* ================================================
-   EDUCATION
-   ================================================ */
-.edu-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 1.8rem 2rem;
-  box-shadow: var(--shadow);
-  transition: box-shadow 0.25s, transform 0.25s;
-}
-
-.edu-date {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--accent);
-  margin-bottom: 0.4rem;
-}
-
-.edu-card h3 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 0.3rem;
-}
-
-.edu-school {
-  font-style: italic;
-  color: var(--text-secondary);
-  margin-bottom: 0.4rem;
-}
-
-.edu-meta {
-  font-size: 0.92rem;
-  color: var(--text-secondary);
-}
-
-/* ================================================
-   SKILLS
-   ================================================ */
-.skill-cloud-group {
-  margin-bottom: 2.2rem;
-}
-
-.skill-cloud-label {
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 0.7rem;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 0.5rem;
-}
-
-.skill-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.6rem 1.2rem;
-}
-
-.cloud-word {
-  font-family: 'Fraunces', serif;
-  font-weight: 600;
-  color: var(--text-primary);
-  cursor: default;
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.cloud-word.size-sm { font-size: 1.1rem; color: var(--text-secondary); }
-.cloud-word.size-md { font-size: 1.5rem; }
-.cloud-word.size-lg { font-size: 2.1rem; }
-
-.cloud-word.hover-lift:hover {
-  color: var(--accent);
-  transform: translateY(-2px);
-  box-shadow: none;
-}
-
-.cloud-word-gold.hover-lift:hover {
-  color: var(--gold-deep);
-}
-
-/* ================================================
-   HOVER LIFT (shared micro-interaction) ================================================ */
-.hover-lift {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.hover-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lift);
-}
-
-.tag-pill.hover-lift:hover {
-  background: var(--accent);
-  color: #fff;
-  box-shadow: 0 8px 20px rgba(30,79,214,0.25);
-}
-
-.tag-pill-gold.hover-lift:hover {
-  background: var(--gold-deep);
-  color: #fff;
-  box-shadow: 0 8px 20px rgba(201,143,30,0.25);
-}
-
-/* ================================================
-   PROJECTS
-   ================================================ */
-.bento-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-bottom: 1.4rem;
-}
-
-.bento-card {
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  text-decoration: none;
-  border: none;
-  border-radius: 18px;
-  overflow: hidden;
-  height: 260px;
-  flex: 1 1 calc(50% - 7px);
-  min-width: 240px;
-  padding: 0;
-  cursor: pointer;
-  background: var(--bg-placeholder);
-  font-family: inherit;
-}
-
-.bento-card-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  background: var(--bg-placeholder);
-  /* If the image fails to load, this keeps the broken-icon/alt-text from
-     showing — alt is left empty on these tags specifically so there's
-     nothing for the browser to fall back to displaying as text. */
-  color: transparent;
-  font-size: 0;
-}
-
-.bento-card-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 45%, rgba(11,31,61,0.82) 100%);
-}
-
-.bento-type-label {
-  position: absolute;
-  top: 1rem; left: 1.1rem;
-  z-index: 2;
-  background: var(--gold);
-  color: #1A1206;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  padding: 0.25rem 0.6rem;
-  border-radius: 8px;
-}
-
-.bento-card-content {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 1.1rem 1.2rem;
-  text-align: left;
-  width: 100%;
-}
-
-.bento-card-title {
-  font-family: 'Fraunces', serif;
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: #fff;
-  line-height: 1.3;
-}
-
-.bento-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-}
-
-.bento-tag {
-  background: rgba(255,255,255,0.18);
-  color: #fff;
-  border-radius: 12px;
-  padding: 0.2rem 0.6rem;
-  font-size: 0.7rem;
-  font-weight: 600;
-}
-
-/* ---- Project detail overlay (JS-controlled, not URL-hash based) ---- */
-.project-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 1100;
-  background: rgba(5,10,18,0.6);
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-
-.project-overlay.is-open {
-  display: flex;
-}
-
-.project-detail-card {
-  display: none;
-  background: var(--bg-card);
-  border-radius: 20px;
-  padding: 2.4rem 2.6rem;
-  max-width: 560px;
-  width: 100%;
-  position: relative;
-  box-shadow: var(--shadow-lift);
-}
-
-.project-detail-card.is-active {
-  display: block;
-}
-
-.project-detail-card h3 {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 0.8rem;
-  padding-right: 2rem;
-}
-
-.project-detail-card .tag-row {
-  margin-bottom: 0.8rem;
-}
-
-.project-detail-card p {
-  color: var(--text-secondary);
-  font-size: 0.96rem;
-  margin-bottom: 1rem;
-}
-
-.project-overlay .detail-close {
-  position: absolute;
-  top: 1.6rem; right: 1.6rem;
-  width: 32px; height: 32px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255,255,255,0.15);
-  color: #fff;
-  font-size: 0.95rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 1101;
-}
-
-.tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-
-.tag-pill-sm {
-  background: var(--bg-placeholder);
-  color: var(--text-secondary);
-  border-radius: 14px;
-  padding: 0.2rem 0.7rem;
-  font-size: 0.76rem;
-  font-weight: 600;
-}
-
-.link-arrow {
-  color: var(--accent);
-  font-weight: 700;
-  font-size: 0.88rem;
-  text-decoration: none;
-}
-
-.video-embed {
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%;
-  border-radius: 16px;
-  overflow: hidden;
-}
-.video-embed iframe {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  border: none;
-}
-
-/* ================================================
-   CERTIFICATIONS - horizontal strip
-   ================================================ */
-.cert-strip {
-  display: flex;
-  gap: 1rem;
-  overflow-x: auto;
-  padding-bottom: 0.6rem;
-  max-width: 100%;
-}
-
-.cert-chip {
-  flex-shrink: 0;
-  width: 160px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  overflow: hidden;
-  text-decoration: none;
-  color: var(--text-primary);
-  box-shadow: var(--shadow);
-  display: block;
-}
-
-.cert-chip img {
-  width: 100%;
-  height: 100px;
-  object-fit: cover;
-  display: block;
-}
-
-.cert-chip span {
-  display: block;
-  padding: 0.7rem 0.8rem;
-  font-size: 0.82rem;
-  font-weight: 600;
-}
-
-/* ================================================
-   EXPERIENCE / LEADERSHIP
-   ================================================ */
-.timeline-track {
-  display: flex;
-  flex-direction: column;
-}
-
-.timeline-entry {
-  display: flex;
-  gap: 1.6rem;
-}
-
-.timeline-marker {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-shrink: 0;
-  width: 16px;
-  padding-top: 0.3rem;
-}
-
-.timeline-dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--gold);
-  border: 3px solid var(--bg-page);
-  box-shadow: 0 0 0 1.5px var(--gold);
-  flex-shrink: 0;
-  z-index: 1;
-}
-
-.timeline-line {
-  width: 2px;
-  flex: 1;
-  background: var(--border);
-  margin-top: 4px;
-}
-
-.timeline-content {
-  flex: 1;
-  min-width: 0;
-  padding-bottom: 2.4rem;
-}
-
-.timeline-date {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--accent);
-  margin-bottom: 0.3rem;
-}
-
-.timeline-content h3 {
-  font-size: 1.15rem;
-  font-weight: 600;
-  margin-bottom: 0.2rem;
-}
-
-.timeline-meta {
-  font-style: italic;
-  color: var(--text-secondary);
-  margin-bottom: 0.6rem;
-}
-
-.timeline-content ul {
-  padding-left: 1.2rem;
-  color: var(--text-secondary);
-  font-size: 0.94rem;
-}
-
-.timeline-content ul li { margin-bottom: 0.3rem; }
-.timeline-content > p { color: var(--text-secondary); font-size: 0.94rem; margin-bottom: 0.4rem; }
-
-/* ================================================
-   PHOTO STRIP (horizontal scroll)
-   ================================================ */
-.photo-strip {
-  display: flex;
-  gap: 0.6rem;
-  margin-top: 1rem;
-  overflow-x: auto;
-  padding-bottom: 0.4rem;
-  max-width: 100%;
-}
-
-.photo-strip img {
-  width: 180px;
-  height: 130px;
-  flex-shrink: 0;
-  object-fit: cover;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: opacity 0.2s;
-}
-
-.photo-strip a:hover img { opacity: 0.82; }
-
-.photo-strip::-webkit-scrollbar,
-.cert-strip::-webkit-scrollbar { height: 6px; }
-.photo-strip::-webkit-scrollbar-track,
-.cert-strip::-webkit-scrollbar-track { background: var(--bg-placeholder); border-radius: 4px; }
-.photo-strip::-webkit-scrollbar-thumb,
-.cert-strip::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
-
-/* ================================================
-   ACHIEVEMENTS
-   ================================================ */
-.trophy-shelf {
-  display: flex;
-  flex-direction: column;
-}
-
-.trophy-row {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.trophy-icon {
-  font-size: 1.6rem;
-  flex-shrink: 0;
-}
-
-.trophy-text {
-  flex: 1;
-  min-width: 0;
-}
-
-.trophy-text h3 {
-  font-size: 1.02rem;
-  font-weight: 600;
-}
-
-.trophy-date {
-  font-size: 0.82rem;
-  color: var(--text-muted);
-}
-
-.trophy-expand {
-  flex-shrink: 0;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-  background: var(--bg-card);
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: background 0.2s, border-color 0.2s;
-}
-
-.trophy-expand:hover {
-  border-color: var(--accent);
-}
-
-.trophy-expand.is-active {
-  background: var(--gold);
-  border-color: var(--gold);
-}
-
-.photo-strip.is-collapsed {
-  display: none;
-}
-
-/* ================================================
-   LIGHTBOX
-   ================================================ */
-.lightbox {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100vh;
-  background: rgba(5,10,18,0.9);
-  z-index: 1000;
-  overflow-y: auto;
-  padding: 2rem 1rem;
-}
-.lightbox:target { display: block; }
-.lightbox-inner { display: flex; justify-content: center; min-height: 100%; }
-.lightbox img {
-  max-width: 90vw !important;
-  width: auto !important;
-  height: auto !important;
-  max-height: 88vh;
-  object-fit: contain !important;
-  border-radius: 10px;
-  align-self: center;
-}
-
-/* ================================================
-   REFERENCES
-   ================================================ */
-.ref-grid {
-  display: flex;
-  gap: 1.4rem;
-  flex-wrap: wrap;
-}
-
-.ref-card {
-  flex: 1;
-  min-width: 240px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 1.6rem 1.8rem;
-  box-shadow: var(--shadow);
-}
-
-.ref-name { font-weight: 700; margin-bottom: 0.2rem; }
-.ref-title { font-style: italic; color: var(--text-secondary); margin-bottom: 0.4rem; font-size: 0.92rem; }
-.ref-contact { font-size: 0.9rem; color: var(--text-secondary); }
-
-/* ================================================
-   FOOTER
-   ================================================ */
-.site-footer {
-  text-align: center;
-  padding: 2.4rem 0 1rem;
-  font-size: 0.82rem;
-  color: var(--text-muted);
-}
-
-.footer-stats-link {
-  margin-top: 0.3rem;
-}
-
-.footer-stats-link a {
-  color: var(--text-muted);
-  text-decoration: underline;
-  font-size: 0.78rem;
-}
-
-/* ================================================
-   SCROLL REVEAL (JS-driven)
-   Progressive enhancement: content is visible by default.
-   JS adds .js-ready to <body> once it's safe to animate,
-   so users never see blank content if JS is slow/blocked.
-   ================================================ */
-.reveal {
-  opacity: 1;
-  transform: none;
-}
-
-body.js-ready .reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-body.js-ready .reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
-  .hover-lift { transition: none; }
-}
-
-/* ================================================
-   RESPONSIVE
-   ================================================ */
-@media (max-width: 900px) {
-  .resume-frame { height: 55vh; }
-}
-
-@media (max-width: 480px) {
-  .sidebar { width: 82vw; max-width: 300px; left: 0; }
-}
-
-@media (max-width: 900px) {
-  .nav-link { padding: 0.85rem 0.7rem; font-size: 0.92rem; }
-}
-
-@media (max-width: 900px) {
-  .progress-rail { display: none; }
-}
-
-@media (max-width: 900px) {
-  .sidebar { transform: translateX(-100%); }
-}
-
-@media (max-width: 900px) {
-  .sidebar.open { transform: translateX(0); }
-}
-
-@media (max-width: 900px) {
-  .mobile-nav-toggle { display: flex; align-items: center; justify-content: center; }
-}
-
-@media (max-width: 900px) {
-  .main-content { margin-left: 0; padding: 0 1.4rem 4rem; }
-}
-
-@media (max-width: 900px) {
-  .hero-title { font-size: 2.3rem; }
-}
-
-@media (max-width: 900px) {
-  .project-row { flex-direction: column; }
-}
-
-@media (max-width: 900px) {
-  .project-media { width: 100%; height: 200px; }
-}
-
-@media (max-width: 900px) {
-  .project-info { padding: 1.2rem 1.4rem 1.4rem; }
-}
-
-@media (max-width: 900px) {
-  .skill-row { flex-direction: column; gap: 0.5rem; }
-}
-
-@media (max-width: 900px) {
-  .skill-label { min-width: unset; }
-}
-
-@media (max-width: 900px) {
-  .ref-grid { flex-direction: column; }
-}
+// ================================================
+// RM35 ADVANCED PORTFOLIO — INTERACTIVITY
+// Tab-style navigation: only one panel is visible at a
+// time, switched by clicking a sidebar nav link.
+// ================================================
+
+// ---- THEME TOGGLE ----
+const themeBtn = document.getElementById('themeBtn');
+const htmlEl = document.documentElement;
+
+themeBtn.addEventListener('click', () => {
+  const current = htmlEl.getAttribute('data-theme');
+  htmlEl.setAttribute('data-theme', current === 'light' ? 'dark' : 'light');
+});
+
+// ---- MOBILE SIDEBAR TOGGLE ----
+const sidebar = document.getElementById('sidebar');
+const mobileNavToggle = document.getElementById('mobileNavToggle');
+const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+
+function openMobileSidebar() {
+  sidebar.classList.add('open');
+  sidebarBackdrop.classList.add('is-visible');
+}
+
+function closeMobileSidebar() {
+  sidebar.classList.remove('open');
+  sidebarBackdrop.classList.remove('is-visible');
+}
+
+mobileNavToggle.addEventListener('click', () => {
+  if (sidebar.classList.contains('open')) {
+    closeMobileSidebar();
+  } else {
+    openMobileSidebar();
+  }
+});
+
+// Clicking the dimmed backdrop closes the sidebar, same as tapping outside it.
+sidebarBackdrop.addEventListener('click', closeMobileSidebar);
+
+// ---- SECTION POSITION RAIL ----
+// Maps each tab to a position 0-9 so the rail can light up
+// "current and everything before it" as a sense of progress.
+const tabOrder = [
+  'hero', 'objective', 'education', 'skills', 'projects',
+  'certifications', 'experience', 'achievements', 'leadership', 'references'
+];
+const railSegments = document.querySelectorAll('.rail-segment');
+
+function updateRail(targetId) {
+  const currentIndex = tabOrder.indexOf(targetId);
+  railSegments.forEach((seg, i) => {
+    seg.classList.remove('is-current', 'is-passed');
+    if (currentIndex === -1) return; // resume-view isn't part of the rail sequence
+    if (i < currentIndex) seg.classList.add('is-passed');
+    if (i === currentIndex) seg.classList.add('is-current');
+  });
+}
+
+// ---- TAB SWITCHING ----
+// Every link with a data-section attribute (sidebar nav links + the
+// "View Resume" button) switches which .panel has .is-active.
+const allTabLinks = document.querySelectorAll('[data-section]');
+const allPanels = document.querySelectorAll('.panel');
+const navLinks = document.querySelectorAll('.nav-link');
+
+function showPanel(targetId, updateUrl = true) {
+  allPanels.forEach(panel => {
+    panel.classList.toggle('is-active', panel.id === targetId);
+  });
+
+  updateRail(targetId);
+
+  // Highlight the matching sidebar nav link, if there is one
+  // (the "View Resume" button itself isn't part of .nav-link,
+  // so resume-view won't highlight any sidebar item, which is fine).
+  navLinks.forEach(link => {
+    link.classList.toggle('active', link.dataset.section === targetId);
+  });
+
+  // Re-trigger the reveal animation for the newly active panel's
+  // .reveal element, so switching tabs feels alive each time.
+  const activePanel = document.getElementById(targetId);
+  if (activePanel) {
+    const revealEl = activePanel.querySelector('.reveal');
+    if (revealEl) {
+      revealEl.classList.remove('is-visible');
+      // Re-add on next frame so the browser registers the removal first
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => revealEl.classList.add('is-visible'));
+      });
+    }
+    // Scroll the content area back to top on tab switch
+    activePanel.scrollIntoView({ block: 'start', behavior: 'instant' });
+  }
+
+  // Close the mobile sidebar (and its backdrop) after a selection
+  closeMobileSidebar();
+
+  // Reflect the current tab in the URL (e.g. yoursite.com/#projects),
+  // so the link is shareable/bookmarkable and works with browser back/forward.
+  if (updateUrl) {
+    history.pushState(null, '', '#' + targetId);
+  }
+}
+
+allTabLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    showPanel(link.dataset.section);
+  });
+});
+
+// ---- DEEP LINKING ----
+// All valid panel IDs, used to validate a URL hash before trusting it.
+const validPanelIds = ['hero', 'resume-view', ...tabOrder.filter(id => id !== 'hero')];
+
+function getPanelIdFromHash() {
+  const hash = window.location.hash.replace('#', '');
+  return validPanelIds.includes(hash) ? hash : 'hero';
+}
+
+// Support browser back/forward buttons moving between tabs.
+window.addEventListener('popstate', () => {
+  showPanel(getPanelIdFromHash(), false);
+});
+
+// ---- PROJECT DETAIL OVERLAY ----
+// Opens/closes via class toggling only — deliberately NOT using the URL hash,
+// since this site's tab navigation already uses the hash for routing between
+// panels, and reusing it here caused the overlay to fight with tab-switching.
+const projectOverlay = document.getElementById('projectOverlay');
+const projectOverlayClose = document.getElementById('projectOverlayClose');
+const bentoCards = document.querySelectorAll('.bento-card');
+const projectDetailCards = document.querySelectorAll('[data-project-detail]');
+
+function openProjectDetail(projectId) {
+  projectDetailCards.forEach(card => {
+    card.classList.toggle('is-active', card.id === projectId);
+  });
+  projectOverlay.classList.add('is-open');
+}
+
+function closeProjectDetail() {
+  projectOverlay.classList.remove('is-open');
+}
+
+bentoCards.forEach(card => {
+  card.addEventListener('click', () => {
+    openProjectDetail(card.dataset.project);
+  });
+});
+
+if (projectOverlayClose) {
+  projectOverlayClose.addEventListener('click', closeProjectDetail);
+}
+
+// Close when clicking the dimmed background itself (not the card inside it)
+if (projectOverlay) {
+  projectOverlay.addEventListener('click', (e) => {
+    if (e.target === projectOverlay) closeProjectDetail();
+  });
+}
+
+// Close with the Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeProjectDetail();
+});
+
+// ---- TROPHY SHELF (Achievements) PHOTO TOGGLE ----
+// Photo strips start collapsed; clicking the camera icon on a trophy row
+// reveals that entry's photos without taking up space for everyone else.
+document.querySelectorAll('.photo-strip[id^="ach-photos-"]').forEach(strip => {
+  strip.classList.add('is-collapsed');
+});
+
+document.querySelectorAll('.trophy-expand').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = document.getElementById(btn.dataset.target);
+    if (!target) return;
+    const willShow = target.classList.contains('is-collapsed');
+    target.classList.toggle('is-collapsed');
+    btn.classList.toggle('is-active', willShow);
+  });
+});
+
+// ---- SCROLL REVEAL (progressive enhancement) ----
+// Content is visible by default (see CSS). Adding 'js-ready' to <body>
+// switches panels to fade-in mode once JS is confirmed running.
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (!prefersReducedMotion) {
+  document.body.classList.add('js-ready');
+}
+
+// On first load: open whichever tab the URL points to (e.g. #projects),
+// or default to the hero/intro tab if the URL has no valid hash.
+const initialPanelId = getPanelIdFromHash();
+showPanel(initialPanelId, false);
+
+requestAnimationFrame(() => {
+  document.querySelectorAll('.panel.is-active .reveal').forEach(el => {
+    el.classList.add('is-visible');
+  });
+});
