@@ -782,6 +782,16 @@ h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; }
   color: var(--text-muted);
 }
 
+.footer-stats-link {
+  margin-top: 0.3rem;
+}
+
+.footer-stats-link a {
+  color: var(--text-muted);
+  text-decoration: underline;
+  font-size: 0.78rem;
+}
+
 /* ================================================
    SCROLL REVEAL (JS-driven)
    Progressive enhancement: content is visible by default.
