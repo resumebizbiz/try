@@ -126,6 +126,59 @@ window.addEventListener('popstate', () => {
   showPanel(getPanelIdFromHash(), false);
 });
 
+// ---- TROPHY SHELF (Achievements) PHOTO TOGGLE ----
+// Photo strips start collapsed; clicking the camera icon on a trophy row
+// reveals that entry's photos without taking up space for everyone else.
+document.querySelectorAll('.photo-strip[id^="ach-photos-"]').forEach(strip => {
+  strip.classList.add('is-collapsed');
+});
+
+document.querySelectorAll('.trophy-expand').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = document.getElementById(btn.dataset.target);
+    if (!target) return;
+    const willShow = target.classList.contains('is-collapsed');
+    target.classList.toggle('is-collapsed');
+    btn.classList.toggle('is-active', willShow);
+  });
+});
+
+// ---- PROJECT DETAIL PANELS (bento cards) ----
+const bentoCards = document.querySelectorAll('.bento-card');
+const projectDetails = document.querySelectorAll('.project-detail');
+
+function closeAllProjectDetails() {
+  projectDetails.forEach(d => d.classList.remove('is-open'));
+}
+
+bentoCards.forEach(card => {
+  card.addEventListener('click', () => {
+    const detailId = card.dataset.detail;
+    const detail = document.getElementById(detailId);
+    if (detail) {
+      closeAllProjectDetails();
+      detail.classList.add('is-open');
+    }
+  });
+});
+
+projectDetails.forEach(detail => {
+  // Close when clicking the dimmed background (but not the card content itself)
+  detail.addEventListener('click', (e) => {
+    if (e.target === detail) closeAllProjectDetails();
+  });
+  // Close when clicking the explicit close button
+  const closeBtn = detail.querySelector('.detail-close');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeAllProjectDetails);
+  }
+});
+
+// Close an open project detail with the Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeAllProjectDetails();
+});
+
 // ---- SCROLL REVEAL (progressive enhancement) ----
 // Content is visible by default (see CSS). Adding 'js-ready' to <body>
 // switches panels to fade-in mode once JS is confirmed running.
