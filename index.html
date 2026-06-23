@@ -199,8 +199,8 @@
 
         <div class="bento-grid">
 
-          <button class="bento-card featured hover-lift" data-detail="detail-1">
-            <img src="1.png" alt="[Project Name]" class="bento-card-img" />
+          <a href="#lightbox-proj-1" class="bento-card featured hover-lift">
+            <img src="1.png" alt="" class="bento-card-img" />
             <span class="bento-type-label">[Project Type, e.g. Final Year Project]</span>
             <div class="bento-card-overlay"></div>
             <span class="bento-card-content">
@@ -211,10 +211,10 @@
                 <span class="bento-tag">[Tool 3]</span>
               </span>
             </span>
-          </button>
+          </a>
 
-          <button class="bento-card tall hover-lift" data-detail="detail-2">
-            <img src="2.png" alt="[Project Name]" class="bento-card-img" />
+          <a href="#lightbox-proj-2" class="bento-card tall hover-lift">
+            <img src="2.png" alt="" class="bento-card-img" />
             <span class="bento-type-label">[Competition/Course Name]</span>
             <div class="bento-card-overlay"></div>
             <span class="bento-card-content">
@@ -224,10 +224,10 @@
                 <span class="bento-tag">[Tool 2]</span>
               </span>
             </span>
-          </button>
+          </a>
 
-          <button class="bento-card small hover-lift" data-detail="detail-3">
-            <img src="3.png" alt="[Project Name]" class="bento-card-img" />
+          <a href="#lightbox-proj-3" class="bento-card small hover-lift">
+            <img src="3.png" alt="" class="bento-card-img" />
             <span class="bento-type-label">Personal</span>
             <div class="bento-card-overlay"></div>
             <span class="bento-card-content">
@@ -236,10 +236,10 @@
                 <span class="bento-tag">[Tool 1]</span>
               </span>
             </span>
-          </button>
+          </a>
 
-          <button class="bento-card wide hover-lift" data-detail="detail-4">
-            <img src="4.png" alt="[Project Name]" class="bento-card-img" />
+          <a href="#lightbox-proj-4" class="bento-card wide hover-lift">
+            <img src="4.png" alt="" class="bento-card-img" />
             <span class="bento-type-label">[Course/Module Name]</span>
             <div class="bento-card-overlay"></div>
             <span class="bento-card-content">
@@ -250,60 +250,76 @@
                 <span class="bento-tag">[Tool 3]</span>
               </span>
             </span>
-          </button>
+          </a>
 
         </div>
-        <!-- Need more projects? Duplicate one <button class="bento-card ...">...</button> block above, -->
+        <!-- Need more projects? Duplicate one <a class="bento-card ...">...</a> block above, -->
         <!-- assign it a size class (featured / tall / small / wide / or none for default), and give it a -->
-        <!-- unique data-detail value matching a new .project-detail block below. -->
+        <!-- unique href/lightbox id pair matching a new lightbox popup below. -->
 
-        <!-- PROJECT DETAIL PANELS — shown when a bento card above is clicked -->
-        <div class="project-detail" id="detail-1">
-          <button class="detail-close" aria-label="Close">✕</button>
-          <h3>[Project Type, e.g. Final Year Project], [Project Title]</h3>
-          <div class="tag-row">
-            <span class="tag-pill-sm">[Tool 1]</span>
-            <span class="tag-pill-sm">[Tool 2]</span>
-            <span class="tag-pill-sm">[Tool 3]</span>
+        <!-- PROJECT DETAIL LIGHTBOXES — same popup pattern used for certificate/photo images elsewhere on this site -->
+        <div class="lightbox project-lightbox" id="lightbox-proj-1">
+          <div class="lightbox-inner">
+            <div class="project-detail-card">
+              <a href="#projects" class="detail-close" aria-label="Close">✕</a>
+              <h3>[Project Type, e.g. Final Year Project], [Project Title]</h3>
+              <div class="tag-row">
+                <span class="tag-pill-sm">[Tool 1]</span>
+                <span class="tag-pill-sm">[Tool 2]</span>
+                <span class="tag-pill-sm">[Tool 3]</span>
+              </div>
+              <p>[Example] Developed a [tool/model/method] using [technique/software], applied to [dataset/scope/sample size], resulting in [specific, measurable outcome or finding].</p>
+              <a href="#" class="link-arrow" target="_blank">View project →</a>
+            </div>
           </div>
-          <p>[Example] Developed a [tool/model/method] using [technique/software], applied to [dataset/scope/sample size], resulting in [specific, measurable outcome or finding].</p>
-          <a href="#" class="link-arrow" target="_blank">View project →</a>
         </div>
 
-        <div class="project-detail" id="detail-2">
-          <button class="detail-close" aria-label="Close">✕</button>
-          <h3>[Competition/Course Name (Code, if applicable)]</h3>
-          <div class="tag-row">
-            <span class="tag-pill-sm">[Tool 1]</span>
-            <span class="tag-pill-sm">[Tool 2]</span>
-            <span class="tag-pill-sm">[Tool 3]</span>
+        <div class="lightbox project-lightbox" id="lightbox-proj-2">
+          <div class="lightbox-inner">
+            <div class="project-detail-card">
+              <a href="#projects" class="detail-close" aria-label="Close">✕</a>
+              <h3>[Competition/Course Name (Code, if applicable)]</h3>
+              <div class="tag-row">
+                <span class="tag-pill-sm">[Tool 1]</span>
+                <span class="tag-pill-sm">[Tool 2]</span>
+                <span class="tag-pill-sm">[Tool 3]</span>
+              </div>
+              <p>[Action verb] + [what you did/built] + [tool/method used], + [result or where it was submitted/presented].</p>
+              <a href="#" class="link-arrow" target="_blank">View project →</a>
+            </div>
           </div>
-          <p>[Action verb] + [what you did/built] + [tool/method used], + [result or where it was submitted/presented].</p>
-          <a href="#" class="link-arrow" target="_blank">View project →</a>
         </div>
 
-        <div class="project-detail" id="detail-3">
-          <button class="detail-close" aria-label="Close">✕</button>
-          <h3>[Project Title]</h3>
-          <div class="tag-row">
-            <span class="tag-pill-sm">[Tool 1]</span>
-            <span class="tag-pill-sm">[Tool 2]</span>
-            <span class="tag-pill-sm">[Tool 3]</span>
+        <div class="lightbox project-lightbox" id="lightbox-proj-3">
+          <div class="lightbox-inner">
+            <div class="project-detail-card">
+              <a href="#projects" class="detail-close" aria-label="Close">✕</a>
+              <h3>[Project Title]</h3>
+              <div class="tag-row">
+                <span class="tag-pill-sm">[Tool 1]</span>
+                <span class="tag-pill-sm">[Tool 2]</span>
+                <span class="tag-pill-sm">[Tool 3]</span>
+              </div>
+              <p>[Action verb] + [what you built/researched], + [supporting context, e.g. publication/presentation status].</p>
+              <a href="#" class="link-arrow" target="_blank">View project →</a>
+            </div>
           </div>
-          <p>[Action verb] + [what you built/researched], + [supporting context, e.g. publication/presentation status].</p>
-          <a href="#" class="link-arrow" target="_blank">View project →</a>
         </div>
 
-        <div class="project-detail" id="detail-4">
-          <button class="detail-close" aria-label="Close">✕</button>
-          <h3>[Project Title, Course/Module Name (Code)]</h3>
-          <div class="tag-row">
-            <span class="tag-pill-sm">[Tool 1]</span>
-            <span class="tag-pill-sm">[Tool 2]</span>
-            <span class="tag-pill-sm">[Tool 3]</span>
+        <div class="lightbox project-lightbox" id="lightbox-proj-4">
+          <div class="lightbox-inner">
+            <div class="project-detail-card">
+              <a href="#projects" class="detail-close" aria-label="Close">✕</a>
+              <h3>[Project Title, Course/Module Name (Code)]</h3>
+              <div class="tag-row">
+                <span class="tag-pill-sm">[Tool 1]</span>
+                <span class="tag-pill-sm">[Tool 2]</span>
+                <span class="tag-pill-sm">[Tool 3]</span>
+              </div>
+              <p>[Action verb] + [what you built/designed], + [problem it addressed], + [tools used], + [recognition/outcome, if any].</p>
+              <a href="#" class="link-arrow" target="_blank">View project →</a>
+            </div>
           </div>
-          <p>[Action verb] + [what you built/designed], + [problem it addressed], + [tools used], + [recognition/outcome, if any].</p>
-          <a href="#" class="link-arrow" target="_blank">View project →</a>
         </div>
 
           <!-- [RM35 ONLY] Optional video embed slot (.video-embed component, defined in style.css). -->
