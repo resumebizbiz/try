@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Full Name — Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- SECTION POSITION RAIL -->
+  <!-- One segment per tab; lights up gold for the current and prior tabs,
+       giving a "step X of N" sense of position without needing scroll. -->
+  <div class="progress-rail" id="progressRail">
+    <div class="rail-segment" data-index="0"></div>
+    <div class="rail-segment" data-index="1"></div>
+    <div class="rail-segment" data-index="2"></div>
+    <div class="rail-segment" data-index="3"></div>
+    <div class="rail-segment" data-index="4"></div>
+    <div class="rail-segment" data-index="5"></div>
+    <div class="rail-segment" data-index="6"></div>
+    <div class="rail-segment" data-index="7"></div>
+    <div class="rail-segment" data-index="8"></div>
+    <div class="rail-segment" data-index="9"></div>
+  </div>
+
+  <!-- THEME TOGGLE -->
+  <button class="theme-toggle" id="themeBtn" title="Toggle dark/light mode">
+    <span class="icon-sun">☀</span>
+    <span class="icon-moon">☾</span>
+  </button>
+
+  <!-- SIDEBAR NAV -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+      <div class="profile-ring-small">
+        <img src="profile.jpg" alt="Full Name" class="profile-pic-small" />
+      </div>
+      <p class="sidebar-name">FULL NAME</p>
+      <p class="sidebar-role">[Target Role]</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="#hero" class="nav-link active" data-section="hero"><span class="nav-dot"></span>Intro</a>
+      <a href="#objective" class="nav-link" data-section="objective"><span class="nav-dot"></span>Objective</a>
+      <a href="#education" class="nav-link" data-section="education"><span class="nav-dot"></span>Education</a>
+      <a href="#skills" class="nav-link" data-section="skills"><span class="nav-dot"></span>Skills</a>
+      <a href="#projects" class="nav-link" data-section="projects"><span class="nav-dot"></span>Projects</a>
+      <a href="#certifications" class="nav-link" data-section="certifications"><span class="nav-dot"></span>Certifications</a>
+      <a href="#experience" class="nav-link" data-section="experience"><span class="nav-dot"></span>Experience</a>
+      <a href="#achievements" class="nav-link" data-section="achievements"><span class="nav-dot"></span>Achievements</a>
+      <a href="#leadership" class="nav-link" data-section="leadership"><span class="nav-dot"></span>Leadership</a>
+      <a href="#references" class="nav-link" data-section="references"><span class="nav-dot"></span>References</a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <a href="#resume-view" class="sidebar-cta" id="viewResumeBtn" data-section="resume-view">View Resume</a>
+    </div>
+  </aside>
+
+  <!-- MOBILE NAV TOGGLE -->
+  <button class="mobile-nav-toggle" id="mobileNavToggle">☰</button>
+
+  <!-- MOBILE SIDEBAR BACKDROP -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <main class="main-content">
+
+    <!-- HERO -->
+    <section class="hero panel is-active" id="hero">
+      <div class="hero-inner reveal">
+        <p class="hero-eyebrow">Portfolio · [City, State]</p>
+        <h1 class="hero-title">Hi, I'm <span class="accent">Full Name</span>.</h1>
+        <p class="hero-sub">[Aspiring/Experienced] [target role] building [key skill 1], [key skill 2], and [key skill 3] — one project at a time.</p>
+        <div class="hero-contact">
+          <a href="mailto:fullname@email.com">fullname@email.com</a>
+          <span class="dot-sep">•</span>
+          <a href="https://linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
+          <span class="dot-sep">•</span>
+          <a href="tel:+60100000000">(+60)1X-XXXXXXX</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUME VIEW (opened via "View Resume" button, not auto-download) -->
+    <section class="block panel" id="resume-view">
+      <div class="block-inner reveal">
+        <p class="block-eyebrow">Resume</p>
+        <h2 class="block-title">My resume</h2>
+        <div class="resume-frame-wrap">
+          <iframe src="Your Resume.pdf" class="resume-frame" title="Resume preview"></iframe>
+        </div>
+        <a href="Your Resume.pdf" class="link-arrow" download>↓ Download this resume</a>
+      </div>
+    </section>
+
+    <!-- OBJECTIVE -->
+    <section class="block panel" id="objective">
+      <div class="block-inner reveal">
+        <p class="block-eyebrow">01 — Objective</p>
+        <h2 class="block-title">What I'm working toward</h2>
+        <p class="objective-text">[Aspiring/Experienced] [target role, e.g. Data Analyst] with a strong foundation in [your field of study], actively building/applying technical competency in [key skill 1, key skill 2, key skill 3]. Seeking a [internship/position] to apply [your relevant skills] within a [type of organisation] and deliver [the value you aim to provide].</p>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="block panel" id="education">
+      <div class="block-inner reveal">
+        <p class="block-eyebrow">02 — Education</p>
+        <h2 class="block-title">Education</h2>
+        <div class="edu-card hover-lift">
+          <p class="edu-date">Mon YYYY – Mon YYYY</p>
+          <h3>[Degree Name, e.g. Bachelor of Science in (Your Field)]</h3>
+          <p class="edu-school">[University/Institution Name, Campus/Location]</p>
+          <p class="edu-meta"><strong>CGPA: X.XX</strong> · [Awards/Dean's List/Scholarships, if applicable]</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="block panel" id="skills">
+      <div class="block-inner reveal">
+        <p class="block-eyebrow">03 — Skills</p>
+        <h2 class="block-title">What I bring to the table</h2>
+
+        <div class="skill-row">
+          <span class="skill-label">Category 1</span>
+          <div class="skill-tags">
+            <span class="tag-pill hover-lift">[Skill 1]</span>
+            <span class="tag-pill hover-lift">[Skill 2]</span>
+            <span class="tag-pill hover-lift">[Skill 3]</span>
+            <span class="tag-pill hover-lift">[Skill 4]</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Category 2</span>
+          <div class="skill-tags">
+            <span class="tag-pill hover-lift">[Skill 1]</span>
+            <span class="tag-pill hover-lift">[Skill 2]</span>
+            <span class="tag-pill hover-lift">[Skill 3]</span>
+            <span class="tag-pill hover-lift">[Skill 4]</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Category 3</span>
+          <div class="skill-tags">
+            <span class="tag-pill hover-lift">[Skill 1]</span>
+            <span class="tag-pill hover-lift">[Skill 2]</span>
+            <span class="tag-pill hover-lift">[Skill 3]</span>
+            <span class="tag-pill hover-lift">[Skill 4]</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Languages</span>
+          <div class="skill-tags">
+            <span class="tag-pill tag-pill-gold hover-lift">[Language 1 (Proficiency)]</span>
+            <span class="tag-pill tag-pill-gold hover-lift">[Language 2 (Proficiency)]</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="block panel" id="projects">
+      <div class="block-inner reveal">
+        <p class="block-eyebrow">04 — Projects</p>
+        <h2 class="block-title">Things I've built</h2>
+        <p class="block-intro">[Short intro describing your project category — e.g. tools/coursework/bootcamp this set of projects came from.]</p>
+
+        <div class="project-list">
+
+          <div class="project-row hover-lift">
+            <div class="project-media">
+              <img src="1.png" alt="[Project Name]" />
+            </div>
+            <div class="project-info">
+              <h3>[Project Type, e.g. Final Year Project], [Project Title]</h3>
+              <div class="tag-row">
+                <span class="tag-pill-sm">[Tool 1]</span>
+                <span class="tag-pill-sm">[Tool 2]</span>
+                <span class="tag-pill-sm">[Tool 3]</span>
+              </div>
+              <p>[Example] Developed a [tool/model/method] using [technique/software], applied to [dataset/scope/sample size], resulting in [specific, measurable outcome or finding].</p>
+              <a href="#" class="link-arrow" target="_blank">View project →</a>
+            </div>
+          </div>
+
+          <div class="project-row hover-lift">
+            <div class="project-media">
+              <img src="2.png" alt="[Project Name]" />
+            </div>
+            <div class="project-info">
+              <h3>[Competition/Course Name (Code, if applicable)]</h3>
+              <div class="tag-row">
+                <span class="tag-pill-sm">[Tool 1]</span>
+                <span class="tag-pill-sm">[Tool 2]</span>
+                <span class="tag-pill-sm">[Tool 3]</span>
+              </div>
+              <p>[Action verb] + [what you did/built] + [tool/method used], + [result or where it was submitted/presented].</p>
+              <a href="#" class="link-arrow" target="_blank">View project →</a>
+            </div>
+          </div>
+
+          <div class="project-row hover-lift">
+            <div class="project-media">
+              <img src="3.png" alt="[Project Name]" />
+            </div>
+            <div class="project-info">
+              <h3>[Project Title]</h3>
+              <div class="tag-row">
+                <span class="tag-pill-sm">[Tool 1]</span>
+                <span class="tag-pill-sm">[Tool 2]</span>
+                <span class="tag-pill-sm">[Tool 3]</span>
+              </div>
+              <p>[Action verb] + [what you built/researched], + [supporting context, e.g. publication/presentation status].</p>
+              <a href="#" class="link-arrow" target="_blank">View project →</a>
+            </div>
+          </div>
+
+          <div class="project-row hover-lift">
+            <div class="project-media">
+              <img src="4.png" alt="[Project Name]" />
+            </div>
+            <div class="project-info">
+              <h3>[Project Title, Course/Module Name (Code)]</h3>
+              <div class="tag-row">
+                <span class="tag-pill-sm">[Tool 1]</span>
+                <span class="tag-pill-sm">[Tool 2]</span>
+                <span class="tag-pill-sm">[Tool 3]</span>
+              </div>
+              <p>[Action verb] + [what you built/designed], + [problem it addressed], + [tools used], + [recognition/outcome, if any].</p>
+              <a href="#" class="link-arrow" target="_blank">View project →</a>
+            </div>
+          </div>
+
+          <!-- [RM35 ONLY] Optional video embed slot (.video-embed component, defined in style.css). -->
+          <!-- This isn't tied to Projects specifically — paste this same block into WHICHEVER tab's -->
+          <!-- .block-inner makes sense for this client (Projects, Achievements, Leadership, etc.), -->
+          <!-- based on what the video actually demonstrates. -->
+          <!-- Example: <div class="video-embed"><iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe></div> -->
+
+        </div>
+        <!-- Need more projects? Duplicate one <div class="project-row hover-lift">...</div> block above and update the content. -->
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section class="block panel" id="certifications">
+      <div class="block-inner reveal">
+        <p class="block-eyebrow">05 — Certifications</p>
+        <h2 class="block-title">Certifications &amp; professional development</h2>
+
+        <div class="cert-strip">
+          <a href="#lightbox-cert-1" class="cert-chip hover-lift">
+            <img src="5.png" alt="[Certification/Course Name]" />
+            <span>[Certification/Course Name]</span>
+          </a>
+          <a href="#lightbox-cert-2" class="cert-chip hover-lift">
+            <img src="6.png" alt="[Certification/Course Name]" />
+            <span>[Certification/Course Name]</span>
+          </a>
+          <a href="#lightbox-cert-3" class="cert-chip hover-lift">
+            <img src="7.png" alt="[Certification/Course Name]" />
+            <span>[Certification/Course Name]</span>
+          </a>
+          <a href="#lightbox-cert-4" class="cert-chip hover-lift">
+            <img src="8.png" alt="[Certification/Course Name]" />
+            <span>[Certification/Course Name]</span>
+          </a>
+          <a href="#lightbox-cert-5" class="cert-chip hover-lift">
+            <img src="9.png" alt="[Certification/Course Name]" />
+            <span>[Certification/Course Name]</span>
+          </a>
+        </div>
+        <!-- Need more certs? Duplicate one <a class="cert-chip hover-lift">...</a> block above, give it a new lightbox id, and update the content. -->
+
+        <div id="lightbox-cert-1" class="lightbox"><a href="#certifications" class="lightbox-inner"><img src="5.png"></a></div>
+        <div id="lightbox-cert-2" class="lightbox"><a href="#certifications" class="lightbox-inner"><img src="6.png"></a></div>
+        <div id="lightbox-cert-3" class="lightbox"><a href="#certifications" class="lightbox-inner"><img src="7.png"></a></div>
+        <div id="lightbox-cert-4" class="lightbox"><a href="#certifications" class="lightbox-inner"><img src="8.png"></a></div>
+        <div id="lightbox-cert-5" class="lightbox"><a href="#certifications" class="lightbox-inner"><img src="9.png"></a></div>
+      </div>
+    </section>
+
+    <!-- WORK EXPERIENCE -->
+    <section class="block panel" id="experience">
+      <div class="block-inner reveal">
+        <p class="block-eyebrow">06 — Experience</p>
+        <h2 class="block-title">Where I've worked</h2>
+
+        <div class="exp-track">
+          <div class="exp-item hover-lift">
+            <p class="exp-date">Mon YYYY – Mon YYYY</p>
+            <h3>[Job Title]</h3>
+            <p class="exp-company">[Company Name (Department)]</p>
+            <ul>
+              <li>[Example] Extracted and analysed [type of data] using [tool/method], investigating [specific scope, e.g. records, accounts, cases] to support [the business outcome/purpose].</li>
+              <li>[Action verb] + [problem you solved/process you improved] + [tool/method used], + [resulting benefit].</li>
+              <li>[Action verb] + [problem/inefficiency you identified] + [solution you built/applied], + [measurable result, e.g. time saved].</li>
+            </ul>
+            <div class="photo-strip">
+              <a href="#lightbox-exp-1-1"><img src="10.png" alt="Photo 1"></a>
+              <a href="#lightbox-exp-1-2"><img src="11.png" alt="Photo 2"></a>
+              <a href="#lightbox-exp-1-3"><img src="12.png" alt="Photo 3"></a>
+              <a href="#lightbox-exp-1-4"><img src="13.png" alt="Photo 4"></a>
+              <a href="#lightbox-exp-1-5"><img src="14.png" alt="Photo 5"></a>
+            </div>
+          </div>
+
+          <div class="exp-item hover-lift">
+            <p class="exp-date">Mon YYYY – Mon YYYY</p>
+            <h3>[Job Title]</h3>
+            <p class="exp-company">[Company/Organisation Name]</p>
+            <ul>
+              <li>[Example] Assessed/Reviewed [what you handled] for [scope, e.g. number of people/items], guiding [who] through [a process/method] to achieve [the goal].</li>
+              <li>[Action verb] + [what you did] + [who/what it affected], + [measurable outcome, if any].</li>
+            </ul>
+            <div class="photo-strip">
+              <a href="#lightbox-exp-2-1"><img src="1.png" alt="Photo 1"></a>
+              <a href="#lightbox-exp-2-2"><img src="2.png" alt="Photo 2"></a>
+              <a href="#lightbox-exp-2-3"><img src="3.png" alt="Photo 3"></a>
+              <a href="#lightbox-exp-2-4"><img src="4.png" alt="Photo 4"></a>
+              <a href="#lightbox-exp-2-5"><img src="5.png" alt="Photo 5"></a>
+            </div>
+          </div>
+        </div>
+        <!-- Need more roles? Duplicate one <div class="exp-item hover-lift">...</div> block above and update the content. -->
+
+        <div id="lightbox-exp-1-1" class="lightbox"><a href="#experience" class="lightbox-inner"><img src="10.png"></a></div>
+        <div id="lightbox-exp-1-2" class="lightbox"><a href="#experience" class="lightbox-inner"><img src="11.png"></a></div>
+        <div id="lightbox-exp-1-3" class="lightbox"><a href="#experience" class="lightbox-inner"><img src="12.png"></a></div>
+        <div id="lightbox-exp-1-4" class="lightbox"><a href="#experience" class="lightbox-inner"><img src="13.png"></a></div>
+        <div id="lightbox-exp-1-5" class="lightbox"><a href="#experience" class="lightbox-inner"><img src="14.png"></a></div>
+        <div id="lightbox-exp-2-1" class="lightbox"><a href="#experience" class="lightbox-inner"><img src="1.png"></a></div>
+        <div id="lightbox-exp-2-2" class="lightbox"><a href="#experience" class="lightbox-inner"><img src="2.png"></a></div>
+        <div id="lightbox-exp-2-3" class="lightbox"><a href="#experience" class="lightbox-inner"><img src="3.png"></a></div>
+        <div id="lightbox-exp-2-4" class="lightbox"><a href="#experience" class="lightbox-inner"><img src="4.png"></a></div>
+        <div id="lightbox-exp-2-5" class="lightbox"><a href="#experience" class="lightbox-inner"><img src="5.png"></a></div>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section class="block panel" id="achievements">
+      <div class="block-inner reveal">
+        <p class="block-eyebrow">07 — Achievements</p>
+        <h2 class="block-title">Recognition along the way</h2>
+
+        <div class="achieve-grid">
+          <div class="achieve-card hover-lift">
+            <p class="achieve-date">Mon YYYY</p>
+            <h3>🥈 [Award/Recognition Name]</h3>
+            <div class="photo-strip">
+              <a href="#lightbox-ach-1-1"><img src="6.png" alt="Photo 1"></a>
+              <a href="#lightbox-ach-1-2"><img src="7.png" alt="Photo 2"></a>
+              <a href="#lightbox-ach-1-3"><img src="8.png" alt="Photo 3"></a>
+              <a href="#lightbox-ach-1-4"><img src="9.png" alt="Photo 4"></a>
+              <a href="#lightbox-ach-1-5"><img src="10.png" alt="Photo 5"></a>
+            </div>
+          </div>
+          <div class="achieve-card hover-lift">
+            <p class="achieve-date">Mon YYYY</p>
+            <h3>🏆 [Award/Recognition Name]</h3>
+            <div class="photo-strip">
+              <a href="#lightbox-ach-2-1"><img src="11.png" alt="Photo 1"></a>
+              <a href="#lightbox-ach-2-2"><img src="12.png" alt="Photo 2"></a>
+              <a href="#lightbox-ach-2-3"><img src="13.png" alt="Photo 3"></a>
+              <a href="#lightbox-ach-2-4"><img src="14.png" alt="Photo 4"></a>
+              <a href="#lightbox-ach-2-5"><img src="1.png" alt="Photo 5"></a>
+            </div>
+          </div>
+          <div class="achieve-card hover-lift">
+            <p class="achieve-date">Mon YYYY</p>
+            <h3>🎓 [Award/Recognition Name]</h3>
+            <div class="photo-strip">
+              <a href="#lightbox-ach-3-1"><img src="2.png" alt="Photo 1"></a>
+              <a href="#lightbox-ach-3-2"><img src="3.png" alt="Photo 2"></a>
+              <a href="#lightbox-ach-3-3"><img src="4.png" alt="Photo 3"></a>
+              <a href="#lightbox-ach-3-4"><img src="5.png" alt="Photo 4"></a>
+              <a href="#lightbox-ach-3-5"><img src="6.png" alt="Photo 5"></a>
+            </div>
+          </div>
+        </div>
+        <!-- Need more achievements? Duplicate one <div class="achieve-card hover-lift">...</div> block above and update the content. -->
+
+        <div id="lightbox-ach-1-1" class="lightbox"><a href="#achievements" class="lightbox-inner"><img src="6.png"></a></div>
+        <div id="lightbox-ach-1-2" class="lightbox"><a href="#achievements" class="lightbox-inner"><img src="7.png"></a></div>
+        <div id="lightbox-ach-1-3" class="lightbox"><a href="#achievements" class="lightbox-inner"><img src="8.png"></a></div>
+        <div id="lightbox-ach-1-4" class="lightbox"><a href="#achievements" class="lightbox-inner"><img src="9.png"></a></div>
+        <div id="lightbox-ach-1-5" class="lightbox"><a href="#achievements" class="lightbox-inner"><img src="10.png"></a></div>
+        <div id="lightbox-ach-2-1" class="lightbox"><a href="#achievements" class="lightbox-inner"><img src="11.png"></a></div>
+        <div id="lightbox-ach-2-2" class="lightbox"><a href="#achievements" class="lightbox-inner"><img src="12.png"></a></div>
+        <div id="lightbox-ach-2-3" class="lightbox"><a href="#achievements" class="lightbox-inner"><img src="13.png"></a></div>
+        <div id="lightbox-ach-2-4" class="lightbox"><a href="#achievements" class="lightbox-inner"><img src="14.png"></a></div>
+        <div id="lightbox-ach-2-5" class="lightbox"><a href="#achievements" class="lightbox-inner"><img src="1.png"></a></div>
+        <div id="lightbox-ach-3-1" class="lightbox"><a href="#achievements" class="lightbox-inner"><img src="2.png"></a></div>
+        <div id="lightbox-ach-3-2" class="lightbox"><a href="#achievements" class="lightbox-inner"><img src="3.png"></a></div>
+        <div id="lightbox-ach-3-3" class="lightbox"><a href="#achievements" class="lightbox-inner"><img src="4.png"></a></div>
+        <div id="lightbox-ach-3-4" class="lightbox"><a href="#achievements" class="lightbox-inner"><img src="5.png"></a></div>
+        <div id="lightbox-ach-3-5" class="lightbox"><a href="#achievements" class="lightbox-inner"><img src="6.png"></a></div>
+      </div>
+    </section>
+
+    <!-- LEADERSHIP -->
+    <section class="block panel" id="leadership">
+      <div class="block-inner reveal">
+        <p class="block-eyebrow">08 — Leadership</p>
+        <h2 class="block-title">Leadership &amp; co-curricular activities</h2>
+
+        <div class="exp-track">
+          <div class="exp-item hover-lift">
+            <p class="exp-date">Mon YYYY</p>
+            <h3>[Role Title] — [Activity/Event Name]</h3>
+            <p>[Example] Directed/Led [an activity/event scope, e.g. participant count], achieving [specific outcome or recognition].</p>
+            <div class="photo-strip">
+              <a href="#lightbox-lead-1-1"><img src="7.png" alt="Photo 1"></a>
+              <a href="#lightbox-lead-1-2"><img src="8.png" alt="Photo 2"></a>
+              <a href="#lightbox-lead-1-3"><img src="9.png" alt="Photo 3"></a>
+              <a href="#lightbox-lead-1-4"><img src="10.png" alt="Photo 4"></a>
+              <a href="#lightbox-lead-1-5"><img src="11.png" alt="Photo 5"></a>
+            </div>
+          </div>
+          <div class="exp-item hover-lift">
+            <p class="exp-date">YYYY – YYYY</p>
+            <h3>[Role Title] — [Activity/Event Name]</h3>
+            <p>[Action verb] + [what you organised/secured/contributed], + [scope or impact].</p>
+            <div class="photo-strip">
+              <a href="#lightbox-lead-2-1"><img src="12.png" alt="Photo 1"></a>
+              <a href="#lightbox-lead-2-2"><img src="13.png" alt="Photo 2"></a>
+              <a href="#lightbox-lead-2-3"><img src="14.png" alt="Photo 3"></a>
+              <a href="#lightbox-lead-2-4"><img src="1.png" alt="Photo 4"></a>
+              <a href="#lightbox-lead-2-5"><img src="2.png" alt="Photo 5"></a>
+            </div>
+          </div>
+        </div>
+        <!-- Need more leadership entries? Duplicate one <div class="exp-item hover-lift">...</div> block above and update the content. -->
+
+        <div id="lightbox-lead-1-1" class="lightbox"><a href="#leadership" class="lightbox-inner"><img src="7.png"></a></div>
+        <div id="lightbox-lead-1-2" class="lightbox"><a href="#leadership" class="lightbox-inner"><img src="8.png"></a></div>
+        <div id="lightbox-lead-1-3" class="lightbox"><a href="#leadership" class="lightbox-inner"><img src="9.png"></a></div>
+        <div id="lightbox-lead-1-4" class="lightbox"><a href="#leadership" class="lightbox-inner"><img src="10.png"></a></div>
+        <div id="lightbox-lead-1-5" class="lightbox"><a href="#leadership" class="lightbox-inner"><img src="11.png"></a></div>
+        <div id="lightbox-lead-2-1" class="lightbox"><a href="#leadership" class="lightbox-inner"><img src="12.png"></a></div>
+        <div id="lightbox-lead-2-2" class="lightbox"><a href="#leadership" class="lightbox-inner"><img src="13.png"></a></div>
+        <div id="lightbox-lead-2-3" class="lightbox"><a href="#leadership" class="lightbox-inner"><img src="14.png"></a></div>
+        <div id="lightbox-lead-2-4" class="lightbox"><a href="#leadership" class="lightbox-inner"><img src="1.png"></a></div>
+        <div id="lightbox-lead-2-5" class="lightbox"><a href="#leadership" class="lightbox-inner"><img src="2.png"></a></div>
+      </div>
+    </section>
+
+    <!-- REFERENCES -->
+    <section class="block panel" id="references">
+      <div class="block-inner reveal">
+        <p class="block-eyebrow">09 — References</p>
+        <h2 class="block-title">References</h2>
+        <div class="ref-grid">
+          <div class="ref-card hover-lift">
+            <p class="ref-name">[Referee 1 Full Name]</p>
+            <p class="ref-title">[Referee 1 Title/Position, Organisation]</p>
+            <p class="ref-contact">email@example.com · (+60)1X-XXXXXXX</p>
+          </div>
+          <div class="ref-card hover-lift">
+            <p class="ref-name">[Referee 2 Full Name]</p>
+            <p class="ref-title">[Referee 2 Title/Position, Organisation]</p>
+            <p class="ref-contact">email@example.com · (+60)1X-XXXXXXX</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p>© 2026 Full Name · Built with HTML, CSS &amp; JS · Hosted on GitHub Pages</p>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
