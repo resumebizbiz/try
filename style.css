@@ -651,6 +651,42 @@ h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; }
   display: flex;
 }
 
+/* ---- Shared image overlay (certs, work/achievement/leadership photos) ---- */
+.image-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  background: rgba(5,10,18,0.85);
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.image-overlay.is-open {
+  display: flex;
+}
+
+.image-overlay img {
+  max-width: 90vw;
+  max-height: 88vh;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+/* Buttons that wrap an image and open it in the shared overlay above —
+   reset default button chrome so they look exactly like the plain images
+   they used to be. */
+.img-trigger {
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  display: block;
+}
+
 .project-detail-card {
   display: none;
   background: var(--bg-card);
@@ -683,7 +719,8 @@ h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; }
   margin-bottom: 1rem;
 }
 
-.project-overlay .detail-close {
+.project-overlay .detail-close,
+.image-overlay .detail-close {
   position: absolute;
   top: 1.6rem; right: 1.6rem;
   width: 32px; height: 32px;
