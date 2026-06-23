@@ -150,43 +150,48 @@
         <p class="block-eyebrow">03 — Skills</p>
         <h2 class="block-title">What I bring to the table</h2>
 
-        <div class="skill-cloud-group">
-          <p class="skill-cloud-label">Category 1</p>
-          <div class="skill-cloud">
-            <span class="cloud-word size-lg hover-lift">[Skill 1]</span>
-            <span class="cloud-word size-md hover-lift">[Skill 2]</span>
-            <span class="cloud-word size-lg hover-lift">[Skill 3]</span>
-            <span class="cloud-word size-sm hover-lift">[Skill 4]</span>
+        <div class="skill-row">
+          <span class="skill-row-label">Category 1</span>
+          <div class="skill-pills">
+            <span class="skill-pill hover-lift"><img data-src="" alt="" class="skill-pill-icon" />[Skill 1]</span>
+            <span class="skill-pill hover-lift"><img data-src="" alt="" class="skill-pill-icon" />[Skill 2]</span>
+            <span class="skill-pill hover-lift"><img data-src="" alt="" class="skill-pill-icon" />[Skill 3]</span>
+            <span class="skill-pill hover-lift"><img data-src="" alt="" class="skill-pill-icon" />[Skill 4]</span>
           </div>
         </div>
 
-        <div class="skill-cloud-group">
-          <p class="skill-cloud-label">Category 2</p>
-          <div class="skill-cloud">
-            <span class="cloud-word size-md hover-lift">[Skill 1]</span>
-            <span class="cloud-word size-lg hover-lift">[Skill 2]</span>
-            <span class="cloud-word size-sm hover-lift">[Skill 3]</span>
-            <span class="cloud-word size-md hover-lift">[Skill 4]</span>
+        <div class="skill-row">
+          <span class="skill-row-label">Category 2</span>
+          <div class="skill-pills">
+            <span class="skill-pill hover-lift"><img data-src="" alt="" class="skill-pill-icon" />[Skill 1]</span>
+            <span class="skill-pill hover-lift"><img data-src="" alt="" class="skill-pill-icon" />[Skill 2]</span>
+            <span class="skill-pill hover-lift"><img data-src="" alt="" class="skill-pill-icon" />[Skill 3]</span>
+            <span class="skill-pill hover-lift"><img data-src="" alt="" class="skill-pill-icon" />[Skill 4]</span>
           </div>
         </div>
 
-        <div class="skill-cloud-group">
-          <p class="skill-cloud-label">Category 3</p>
-          <div class="skill-cloud">
-            <span class="cloud-word size-sm hover-lift">[Skill 1]</span>
-            <span class="cloud-word size-lg hover-lift">[Skill 2]</span>
-            <span class="cloud-word size-md hover-lift">[Skill 3]</span>
-            <span class="cloud-word size-lg hover-lift">[Skill 4]</span>
+        <div class="skill-row">
+          <span class="skill-row-label">Category 3</span>
+          <div class="skill-pills">
+            <span class="skill-pill hover-lift"><img data-src="" alt="" class="skill-pill-icon" />[Skill 1]</span>
+            <span class="skill-pill hover-lift"><img data-src="" alt="" class="skill-pill-icon" />[Skill 2]</span>
+            <span class="skill-pill hover-lift"><img data-src="" alt="" class="skill-pill-icon" />[Skill 3]</span>
+            <span class="skill-pill hover-lift"><img data-src="" alt="" class="skill-pill-icon" />[Skill 4]</span>
           </div>
         </div>
 
-        <div class="skill-cloud-group">
-          <p class="skill-cloud-label">Languages</p>
-          <div class="skill-cloud">
-            <span class="cloud-word size-md cloud-word-gold hover-lift">[Language 1 (Proficiency)]</span>
-            <span class="cloud-word size-md cloud-word-gold hover-lift">[Language 2 (Proficiency)]</span>
+        <div class="skill-row skill-row-last">
+          <span class="skill-row-label">Languages</span>
+          <div class="skill-pills">
+            <span class="skill-pill skill-pill-gold hover-lift">[Language 1 (Proficiency)]</span>
+            <span class="skill-pill skill-pill-gold hover-lift">[Language 2 (Proficiency)]</span>
           </div>
         </div>
+        <!-- Each skill pill has a data-src placeholder for that tool's logo icon. -->
+        <!-- To add a logo, change data-src="" to src="path-to-logo.png" (e.g. src="excel-icon.png") -->
+        <!-- on that specific <img> tag — it will then appear automatically. -->
+        <!-- If no icon is available for a skill, just leave it as data-src (no visual effect either way). -->
+        <!-- Language pills intentionally have no icon slot. -->
       </div>
     </section>
 
@@ -327,23 +332,28 @@
         <div class="cert-strip">
           <button class="cert-chip hover-lift img-trigger" data-img="5.png" type="button">
             <img src="5.png" alt="[Certification/Course Name]" />
-            <span>[Certification/Course Name]</span>
+            <span class="cert-chip-name">[Certification/Course Name]</span>
+            <span class="cert-chip-issuer">[Issuing Institution]</span>
           </button>
           <button class="cert-chip hover-lift img-trigger" data-img="6.png" type="button">
             <img src="6.png" alt="[Certification/Course Name]" />
-            <span>[Certification/Course Name]</span>
+            <span class="cert-chip-name">[Certification/Course Name]</span>
+            <span class="cert-chip-issuer">[Issuing Institution]</span>
           </button>
           <button class="cert-chip hover-lift img-trigger" data-img="7.png" type="button">
             <img src="7.png" alt="[Certification/Course Name]" />
-            <span>[Certification/Course Name]</span>
+            <span class="cert-chip-name">[Certification/Course Name]</span>
+            <span class="cert-chip-issuer">[Issuing Institution]</span>
           </button>
           <button class="cert-chip hover-lift img-trigger" data-img="8.png" type="button">
             <img src="8.png" alt="[Certification/Course Name]" />
-            <span>[Certification/Course Name]</span>
+            <span class="cert-chip-name">[Certification/Course Name]</span>
+            <span class="cert-chip-issuer">[Issuing Institution]</span>
           </button>
           <button class="cert-chip hover-lift img-trigger" data-img="9.png" type="button">
             <img src="9.png" alt="[Certification/Course Name]" />
-            <span>[Certification/Course Name]</span>
+            <span class="cert-chip-name">[Certification/Course Name]</span>
+            <span class="cert-chip-issuer">[Issuing Institution]</span>
           </button>
         </div>
         <!-- Need more certs? Duplicate one <button class="cert-chip hover-lift img-trigger">...</button> block above and update the content. -->
@@ -477,45 +487,33 @@
         <p class="block-eyebrow">08 — Leadership</p>
         <h2 class="block-title">Leadership &amp; co-curricular activities</h2>
 
-        <div class="timeline-track">
-          <div class="timeline-entry">
-            <div class="timeline-marker">
-              <span class="timeline-dot"></span>
-              <span class="timeline-line"></span>
-            </div>
-            <div class="timeline-content">
-              <p class="timeline-date">Mon YYYY</p>
-              <h3>[Role Title] — [Activity/Event Name]</h3>
-              <p>[Example] Directed/Led [an activity/event scope, e.g. participant count], achieving [specific outcome or recognition].</p>
-              <div class="photo-strip">
-                <button class="img-trigger" data-img="7.png" type="button"><img src="7.png" alt="Photo 1"></button>
-                <button class="img-trigger" data-img="8.png" type="button"><img src="8.png" alt="Photo 2"></button>
-                <button class="img-trigger" data-img="9.png" type="button"><img src="9.png" alt="Photo 3"></button>
-                <button class="img-trigger" data-img="10.png" type="button"><img src="10.png" alt="Photo 4"></button>
-                <button class="img-trigger" data-img="11.png" type="button"><img src="11.png" alt="Photo 5"></button>
-              </div>
+        <div class="leadership-list">
+          <div class="leadership-card hover-lift">
+            <p class="leadership-date">Mon YYYY</p>
+            <h3>[Role Title] — [Activity/Event Name]</h3>
+            <p>[Example] Directed/Led [an activity/event scope, e.g. participant count], achieving [specific outcome or recognition].</p>
+            <div class="photo-strip">
+              <button class="img-trigger" data-img="7.png" type="button"><img src="7.png" alt="Photo 1"></button>
+              <button class="img-trigger" data-img="8.png" type="button"><img src="8.png" alt="Photo 2"></button>
+              <button class="img-trigger" data-img="9.png" type="button"><img src="9.png" alt="Photo 3"></button>
+              <button class="img-trigger" data-img="10.png" type="button"><img src="10.png" alt="Photo 4"></button>
+              <button class="img-trigger" data-img="11.png" type="button"><img src="11.png" alt="Photo 5"></button>
             </div>
           </div>
-          <div class="timeline-entry">
-            <div class="timeline-marker">
-              <span class="timeline-dot"></span>
-            </div>
-            <div class="timeline-content">
-              <p class="timeline-date">YYYY – YYYY</p>
-              <h3>[Role Title] — [Activity/Event Name]</h3>
-              <p>[Action verb] + [what you organised/secured/contributed], + [scope or impact].</p>
-              <div class="photo-strip">
-                <button class="img-trigger" data-img="12.png" type="button"><img src="12.png" alt="Photo 1"></button>
-                <button class="img-trigger" data-img="13.png" type="button"><img src="13.png" alt="Photo 2"></button>
-                <button class="img-trigger" data-img="14.png" type="button"><img src="14.png" alt="Photo 3"></button>
-                <button class="img-trigger" data-img="1.png" type="button"><img src="1.png" alt="Photo 4"></button>
-                <button class="img-trigger" data-img="2.png" type="button"><img src="2.png" alt="Photo 5"></button>
-              </div>
+          <div class="leadership-card hover-lift">
+            <p class="leadership-date">YYYY – YYYY</p>
+            <h3>[Role Title] — [Activity/Event Name]</h3>
+            <p>[Action verb] + [what you organised/secured/contributed], + [scope or impact].</p>
+            <div class="photo-strip">
+              <button class="img-trigger" data-img="12.png" type="button"><img src="12.png" alt="Photo 1"></button>
+              <button class="img-trigger" data-img="13.png" type="button"><img src="13.png" alt="Photo 2"></button>
+              <button class="img-trigger" data-img="14.png" type="button"><img src="14.png" alt="Photo 3"></button>
+              <button class="img-trigger" data-img="1.png" type="button"><img src="1.png" alt="Photo 4"></button>
+              <button class="img-trigger" data-img="2.png" type="button"><img src="2.png" alt="Photo 5"></button>
             </div>
           </div>
         </div>
-        <!-- Need more leadership entries? Duplicate one <div class="timeline-entry">...</div> block above and update the content. -->
-        <!-- Every entry except the LAST one needs a <span class="timeline-line"></span> inside .timeline-marker. -->
+        <!-- Need more leadership entries? Duplicate one <div class="leadership-card hover-lift">...</div> block above and update the content. -->
       </div>
     </section>
 
