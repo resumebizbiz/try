@@ -292,10 +292,33 @@ h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; }
    HERO
    ================================================ */
 .hero {
+  position: relative;
   min-height: 70vh;
   display: flex;
   align-items: center;
   padding-top: 4rem;
+  overflow: hidden;
+}
+
+.hero-bg-mark {
+  position: absolute;
+  top: 50%;
+  right: -2rem;
+  transform: translateY(-50%);
+  font-family: 'Fraunces', serif;
+  font-size: 32rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--text-primary);
+  opacity: 0.04;
+  z-index: 0;
+  user-select: none;
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
 }
 
 .hero-eyebrow {
@@ -438,44 +461,47 @@ h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; }
 /* ================================================
    SKILLS
    ================================================ */
-.skill-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.4rem;
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--border);
+.skill-cloud-group {
+  margin-bottom: 2.2rem;
 }
 
-.skill-label {
-  min-width: 130px;
-  font-size: 0.82rem;
+.skill-cloud-label {
+  font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--text-secondary);
-  flex-shrink: 0;
-  padding-top: 0.5rem;
+  color: var(--text-muted);
+  margin-bottom: 0.7rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
 }
 
-.skill-tags {
+.skill-cloud {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  align-items: baseline;
+  gap: 0.6rem 1.2rem;
 }
 
-.tag-pill {
-  background: var(--bg-card);
-  border: 1.5px solid var(--accent);
-  color: var(--accent);
-  border-radius: 20px;
-  padding: 0.4rem 1rem;
-  font-size: 0.85rem;
+.cloud-word {
+  font-family: 'Fraunces', serif;
   font-weight: 600;
-  transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+  color: var(--text-primary);
+  cursor: default;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
-.tag-pill-gold {
-  border-color: var(--gold-deep);
+.cloud-word.size-sm { font-size: 1.1rem; color: var(--text-secondary); }
+.cloud-word.size-md { font-size: 1.5rem; }
+.cloud-word.size-lg { font-size: 2.1rem; }
+
+.cloud-word.hover-lift:hover {
+  color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: none;
+}
+
+.cloud-word-gold.hover-lift:hover {
   color: var(--gold-deep);
 }
 
@@ -505,46 +531,158 @@ h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; }
 /* ================================================
    PROJECTS
    ================================================ */
-.project-list {
+.bento-grid {
   display: flex;
-  flex-direction: column;
-  gap: 1.4rem;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 1.4rem;
 }
 
-.project-row {
+.bento-card {
+  position: relative;
   display: flex;
-  gap: 1.6rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
+  align-items: flex-end;
+  border: none;
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: var(--shadow);
+  height: 190px;
+  flex: 1 1 calc(25% - 11px);
+  min-width: 220px;
+  padding: 0;
+  cursor: pointer;
+  background: var(--bg-placeholder);
+  font-family: inherit;
 }
 
-.project-media {
-  width: 260px;
-  flex-shrink: 0;
+.bento-card.featured {
+  flex: 1 1 calc(50% - 7px);
+  height: 396px;
+}
+.bento-card.tall {
+  flex: 1 1 calc(25% - 11px);
+  height: 396px;
+}
+.bento-card.wide {
+  flex: 1 1 calc(50% - 7px);
+}
+.bento-card.small {
+  flex: 1 1 calc(25% - 11px);
 }
 
-.project-media img {
+.bento-card-img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  min-height: 180px;
   object-fit: cover;
-  display: block;
 }
 
-.project-info {
-  padding: 1.6rem 1.8rem 1.6rem 0;
+.bento-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 45%, rgba(11,31,61,0.82) 100%);
+}
+
+.bento-type-label {
+  position: absolute;
+  top: 1rem; left: 1.1rem;
+  z-index: 2;
+  background: var(--gold);
+  color: #1A1206;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: 8px;
+}
+
+.bento-card-content {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-  min-width: 0;
+  gap: 0.5rem;
+  padding: 1.1rem 1.2rem;
+  text-align: left;
+  width: 100%;
 }
 
-.project-info h3 {
-  font-size: 1.1rem;
+.bento-card-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1rem;
   font-weight: 600;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.bento-card.featured .bento-card-title { font-size: 1.3rem; }
+
+.bento-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.bento-tag {
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+  border-radius: 12px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+/* ---- Project detail panel (opens when a bento card is clicked) ---- */
+.project-detail {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  background: rgba(5,10,18,0.55);
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.project-detail.is-open {
+  display: flex;
+}
+
+.project-detail {
+  flex-direction: column;
+  align-items: stretch;
+  max-width: 560px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border-radius: 20px;
+  padding: 2.4rem 2.6rem;
+  box-shadow: var(--shadow-lift);
+  position: relative;
+  gap: 0.8rem;
+}
+
+.project-detail h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.project-detail p {
+  color: var(--text-secondary);
+  font-size: 0.96rem;
+}
+
+.detail-close {
+  position: absolute;
+  top: 1.2rem; right: 1.2rem;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: var(--bg-placeholder);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  cursor: pointer;
 }
 
 .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
@@ -625,47 +763,76 @@ h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; }
 /* ================================================
    EXPERIENCE / LEADERSHIP
    ================================================ */
-.exp-track {
+.timeline-track {
   display: flex;
   flex-direction: column;
-  gap: 1.4rem;
 }
 
-.exp-item {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 1.8rem 2rem;
-  box-shadow: var(--shadow);
+.timeline-entry {
+  display: flex;
+  gap: 1.6rem;
 }
 
-.exp-date {
+.timeline-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 16px;
+  padding-top: 0.3rem;
+}
+
+.timeline-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 3px solid var(--bg-page);
+  box-shadow: 0 0 0 1.5px var(--gold);
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.timeline-line {
+  width: 2px;
+  flex: 1;
+  background: var(--border);
+  margin-top: 4px;
+}
+
+.timeline-content {
+  flex: 1;
+  min-width: 0;
+  padding-bottom: 2.4rem;
+}
+
+.timeline-date {
   font-size: 0.85rem;
   font-weight: 700;
   color: var(--accent);
   margin-bottom: 0.3rem;
 }
 
-.exp-item h3 {
-  font-size: 1.1rem;
+.timeline-content h3 {
+  font-size: 1.15rem;
   font-weight: 600;
   margin-bottom: 0.2rem;
 }
 
-.exp-company {
+.timeline-meta {
   font-style: italic;
   color: var(--text-secondary);
   margin-bottom: 0.6rem;
 }
 
-.exp-item ul {
+.timeline-content ul {
   padding-left: 1.2rem;
   color: var(--text-secondary);
   font-size: 0.94rem;
 }
 
-.exp-item ul li { margin-bottom: 0.3rem; }
-.exp-item > p { color: var(--text-secondary); font-size: 0.94rem; margin-bottom: 0.4rem; }
+.timeline-content ul li { margin-bottom: 0.3rem; }
+.timeline-content > p { color: var(--text-secondary); font-size: 0.94rem; margin-bottom: 0.4rem; }
 
 /* ================================================
    PHOTO STRIP (horizontal scroll)
@@ -701,28 +868,63 @@ h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; }
 /* ================================================
    ACHIEVEMENTS
    ================================================ */
-.achieve-grid {
+.trophy-shelf {
   display: flex;
   flex-direction: column;
-  gap: 1.4rem;
 }
 
-.achieve-card {
-  background: var(--bg-card);
+.trophy-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.trophy-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.trophy-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.trophy-text h3 {
+  font-size: 1.02rem;
+  font-weight: 600;
+}
+
+.trophy-date {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.trophy-expand {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 1.6rem 1.8rem;
-  box-shadow: var(--shadow);
+  background: var(--bg-card);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
 }
 
-.achieve-date {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--accent);
-  margin-bottom: 0.3rem;
+.trophy-expand:hover {
+  border-color: var(--accent);
 }
 
-.achieve-card h3 { font-size: 1.08rem; font-weight: 600; }
+.trophy-expand.is-active {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+.photo-strip.is-collapsed {
+  display: none;
+}
 
 /* ================================================
    LIGHTBOX
