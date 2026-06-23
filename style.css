@@ -267,8 +267,14 @@ h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; }
    ================================================ */
 .main-content {
   margin-left: 264px;
-  max-width: 920px;
+  display: flex;
+  justify-content: center;
   padding: 0 3rem 5rem;
+}
+
+.main-content > .panel {
+  width: 100%;
+  max-width: 920px;
 }
 
 /* ================================================
